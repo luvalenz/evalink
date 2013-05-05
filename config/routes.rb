@@ -1,4 +1,21 @@
 Evalink::Application.routes.draw do
+  resources :companies
+
+
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "show_results" => "search#show_results", :as => "search_results"
+  get "choose_jobs" => "search#choose_jobs", :as => "choose_jobs"
+  get "choose_features" => "search#choose_features", :as => "choose_features"
+  get "sign_up" => "users#new", :as => "sign_up"
+
+  root :to => "users#new"
+  resources :users
+  resources :sessions
+
+  get "sessions/new"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

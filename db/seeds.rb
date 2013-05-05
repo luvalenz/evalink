@@ -3,5 +3,6 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+   Job.create([{ name: '(none)' }, { name: 'developer' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Job.create()

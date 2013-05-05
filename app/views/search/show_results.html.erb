@@ -1,0 +1,8 @@
+<% @i = 1 %>
+<h1> Felicitaciones! Has encontrado candidatos! </h1>
+<% for u in @users do %>
+
+  <%= link_to "#{@i}. #{u.first_name} #{u.last_name}, puntaje: #{u.score(params)}", u %> <br/>
+  <% @i += 1 %>
+<% end %>
+  

@@ -1,0 +1,9 @@
+<h1> Búsqueda de candidatos </h1>
+
+Elija el tipo de trabajo para el que desea buscar canditatos
+<%= form_tag(choose_features_url, :method => "get") do %>
+  <%= collection_select "job", :job_id, Job.all, :id, :name %>
+  <%= submit_tag("Siguiente") %>
+<% end %>
+
+

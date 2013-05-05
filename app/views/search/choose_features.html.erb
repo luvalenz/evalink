@@ -1,0 +1,30 @@
+<h1> Búsqueda de developers </h1>
+
+
+
+
+
+Elija el tipo de trabajo para el que desea buscar canditatos
+
+
+
+
+
+Elija las características que está buscando
+<%= form_tag(search_results_url, :method => "get") do %>
+  <%= check_box_tag(:cpp) %>
+  <%= label_tag(:cpp, "c++") %></br>
+
+  <%= check_box_tag(:c) %>
+  <%= label_tag(:c, "c") %></br>
+
+  <%= check_box_tag(:ruby) %>
+  <%= label_tag(:ruby, "ruby") %></br>
+
+  <%= check_box_tag(:php) %>
+  <%= label_tag(:php, "php") %></br>
+
+  <%= check_box_tag(:python) %>
+  <%= label_tag(:python, "python") %></br>
+  <%= submit_tag("Buscar") %>
+<% end %>

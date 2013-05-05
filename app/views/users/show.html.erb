@@ -1,0 +1,44 @@
+<h1>Perfil</h1>
+
+
+  <p>
+    <strong> Nombre:  </strong>
+    <%= @user.first_name %>
+  </p>
+    <p>
+    <strong> Apellido:  </strong>
+    <%= @user.last_name %>
+  </p>
+    <p>
+    <strong> Edad:  </strong>
+    <%= @user.age %>
+  </p>
+    <p>
+    <strong> Universidad:  </strong>
+    <%= @user.university %>
+  </p>
+  <p>
+    <strong> Profesion:  </strong>
+    <%= @user.profession %>
+  </p>  
+  <p>
+    <strong> Busco trabajo como:  </strong>
+    <%= @job.name %>
+  </p>
+  <% if @job.id == 2 %>
+    <h2> Datos de developer </h2>
+    c++ = <%= @user.cpp %><br/>
+    c = <%= @user.c %><br/>
+    ruby = <%= @user.ruby %><br/>
+    php = <%= @user.php %><br/>
+    python = <%= @user.python %><br/>
+  <% end %>
+  <br/>
+  <% if @user.id == current_user.id %>
+    <% if @user.company %>
+      Usted representa a la empresa <%= @user.company.name %> <br/>
+      <%= link_to "Buscar candidatos a empleos para #{@user.company.name}", choose_jobs_url %>
+    <% else %>
+      <%= link_to "Representar empresa", new_company_url %>
+    <% end %>
+  <% end %>
