@@ -9,12 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :age
       t.string :university
       t.string :profession
-      t.string :job_id
-      t.integer :cpp
-      t.integer :c
-      t.integer :ruby
-      t.integer :php
-      t.integer :python
+      t.string :job_looking_for
       t.integer :company_id
       t.timestamps
     end

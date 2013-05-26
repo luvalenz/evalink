@@ -1,0 +1,12 @@
+
+
+<% @users.each do |u| %>
+  <% if "#{u.first_name} #{u.last_name}".include?(@query) %>
+    <% @found += 1 %>
+    <%= link_to "#{u.first_name} #{u.last_name}", u %>
+  <% end %>
+<% end %>
+
+<%if @found == 0 %>
+  No se encontraron usuarios
+<%end%>

@@ -1,7 +1,9 @@
 Evalink::Application.routes.draw do
+
+
   resources :companies
 
-
+  get "/expertises/calificar" => "expertises#calificar", :as => "calificar_expertise"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "show_results" => "search#show_results", :as => "search_results"
@@ -12,6 +14,9 @@ Evalink::Application.routes.draw do
   root :to => "users#new"
   resources :users
   resources :sessions
+  resources :abilities
+  resources :expertises
+  resources :validations
 
   get "sessions/new"
 

@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  def index
+    @query = params[:q]
+    @users = User.all
+    @found = 0
+  end
+
+
+
   def new
     redirect_to current_user if current_user
     @user = User.new
@@ -6,14 +14,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.cpp = rand(10)
-    @user.c = rand(10)
-    @user.ruby = rand(10)
-    @user.php = rand(10)
-    @user.python = rand(10)
-
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      redirect_to log_in_url, :notice => "Signed up!"
     else
       render "new"
     end
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @job = Job.find(@user.job_id)
+    @abilities = @user.abilities
+    @expertises = @user.expertises
   end
 end

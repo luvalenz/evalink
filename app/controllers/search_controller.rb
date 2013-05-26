@@ -9,7 +9,7 @@ end
 
 def show_results
   @users = User.where(:job_id => 2)
-  @users.sort! { |a,b| a.score(params) <=> b.score(params) }
+  @users.sort! { |b,a| a.score(params) <=> b.score(params) }
 end
 
 end

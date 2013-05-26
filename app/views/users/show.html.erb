@@ -23,17 +23,25 @@
   </p>  
   <p>
     <strong> Busco trabajo como:  </strong>
-    <%= @job.name %>
+    <%= @user.job_looking_for %>
   </p>
-  <% if @job.id == 2 %>
-    <h2> Datos de developer </h2>
-    c++ = <%= @user.cpp %><br/>
-    c = <%= @user.c %><br/>
-    ruby = <%= @user.ruby %><br/>
-    php = <%= @user.php %><br/>
-    python = <%= @user.python %><br/>
-  <% end %>
+
+    <h2> Mis habilidades</h2>
+    <% @abilities.each do |a| %>
+      <%= link_to "#{a.name}", a %> 
+      <% if a.has_validations? %>
+        habilidad validada por experto(s)
+        <%end%>
+      <br/>
+    <% end %>
+    <% if @user.id == current_user.id %><br/>
+      <%= link_to "Agregar habilidad", new_ability_url %>
+    <% end %>
+
+
+
   <br/>
+<h2> Empresas </h2>
   <% if @user.id == current_user.id %>
     <% if @user.company %>
       Usted representa a la empresa <%= @user.company.name %> <br/>
@@ -42,3 +50,17 @@
       <%= link_to "Representar empresa", new_company_url %>
     <% end %>
   <% end %>
+
+  <h2> Expertises </h2>
+  <div>
+    Tener una expertise en un área te permite validad las habilidades de otros usuarios en esa área<br/>
+    <% @expertises.each do |e| %>
+      <%= link_to "#{e.area}", e %>
+    <% end %>
+
+
+    <br/>
+    <% if @user.id == current_user.id %><br/>
+      <%= link_to "Agregar expertise", new_expertise_url %>
+    <% end %>
+  </div>

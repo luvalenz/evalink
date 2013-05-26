@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Area:</b>
+  <%= @expertise.area %>
+</p>
+
+<p>
+  <b>Institución:</b>
+  <%= @expertise.institution %>
+</p>
+
+<p>
+  <b>Cargo:</b>
+  <%= @expertise.cargo %>
+</p>
+
+<p>
+  <b>Valoraciones positivas:</b>
+  <%= @expertise.positive %>
+</p>
+
+<p>
+  <b>Valoraciones negativas:</b>
+  <%= @expertise.negative %>
+</p>
+
+<% if @user != current_user %>
+  <h2> Calificar expertise </h2>
+  <% if !current_user.has_voted?(@expertise) %>
+    Califícala como positiva si consideras que los datos son verídicos y negativa si son falsos
+  <%= form_tag("calificar", :method => "get") do %>
+  <%= radio_button_tag(:nota, "positivo") %>
+  <%= label_tag(:positivo, "Positivo") %>
+  <%= radio_button_tag(:nota, "negativo") %>
+  <%= label_tag(:negativo, "Negativo") %>
+  <%= hidden_field_tag(:expertise_id, @expertise.id) %>
+  <%= submit_tag("Calificar") %>
+<% end %>
+  <% else %>
+    Ya calificaste esta expertise, no puedes hacerlo de nuevo.
+  <% end %>
+    
+
+<% end %>

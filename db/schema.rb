@@ -11,12 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505010234) do
+ActiveRecord::Schema.define(:version => 20130526031509) do
+
+  create_table "abilities", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.string   "area"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "expertises", :force => true do |t|
+    t.string   "area"
+    t.string   "institution"
+    t.string   "cargo"
+    t.integer  "positive"
+    t.integer  "negative"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "jobs", :force => true do |t|
@@ -34,15 +54,26 @@ ActiveRecord::Schema.define(:version => 20130505010234) do
     t.integer  "age"
     t.string   "university"
     t.string   "profession"
-    t.string   "job_id"
-    t.integer  "cpp"
-    t.integer  "c"
-    t.integer  "ruby"
-    t.integer  "php"
-    t.integer  "python"
+    t.string   "job_looking_for"
     t.integer  "company_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "validations", :force => true do |t|
+    t.string   "comment"
+    t.integer  "ability_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "votacions", :force => true do |t|
+    t.boolean  "done"
+    t.integer  "user_id"
+    t.integer  "expertise_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

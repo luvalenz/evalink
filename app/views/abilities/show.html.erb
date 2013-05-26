@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+
+  <h2><%= @ability.name %></h2>
+  (Habilidad de <%= link_to "#{@user.first_name} #{@user.last_name}", @user %>)<br/>
+
+
+  <b>Area:</b><br/>
+  <%= @ability.area %>
+</p>
+
+
+<p>
+  <b>Description:</b><br/>
+  <%= @ability.description %>
+</p>
+
+
+<h2> Validaciones por expertos </h2>
+
+<% if @user != current_user && current_user.is_expert?(@ability.area) && !current_user.has_validated?(@ability) %>
+<b> Eres un experto en esta área, puedes <%=link_to "validarla",  new_validation_url(:ability_id => @ability.id) %> </b><br/>
+
+<%end%>
+
+<% if @ability.has_validations? %>
+  Esta habilidad ha sido validada por los siguientes expertos.<br/>
+  <% @validations.each do |v| %>
+    <%= link_to "#{v.user.first_name} #{v.user.last_name}", v.user %>
+  <%end%>
+<%else%>
+  <p> Esta habilidad no ha sido evaluada por expertos. </p>
+<%end%>
+
+<h2> Validaciones por tests </h2>
+
+<p> Esta habilidad no ha sido validada por tests </p>

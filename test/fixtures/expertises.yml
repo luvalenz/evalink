@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  area: MyString
+  positive: 
+  negative: 1
+
+two:
+  area: MyString
+  positive: 
+  negative: 1

@@ -1,0 +1,38 @@
+  Siendo experto de un área, puedes validar las habilidades de otros usuarios.
+
+  Recuerda que en EVALINK puedes registrarte como experto de un área, pero todos nuestros usuarios podrán calificar la credibilidad de ésto. Si nuestros usuarios creen que la información que pones es falta, perderás tu calidad de experto
+
+  <br/>
+  <br/>
+
+<%= form_for(@expertise) do |f| %>
+  <% if @expertise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expertise.errors.count, "error") %> prohibited this expertise from being saved:</h2>
+
+      <ul>
+      <% @expertise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <b><%= f.label :area %></b><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <b><%= f.label :Institucion %></b><br/> Indica la institución en la que te desempeñas como experto<br />
+    <%= f.text_field :institution %>
+  </div>
+  <div class="field">
+    <b><%= f.label :cargo %></b><br/> Indica el cargo que tienes como experto. Por ej. ser profesor de una universidad<br />
+    <%= f.text_field :cargo %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+#user_nav
+{
+  background-color:#e9e9e9;
+}
